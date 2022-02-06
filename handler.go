@@ -39,10 +39,8 @@ func handleCrash(handler func(interface{})) {
 	if r := recover(); r != nil {
 		handler(r)
 
-		if additionalHandlers != nil {
-			for _, fn := range additionalHandlers {
-				fn(r)
-			}
+		for _, fn := range additionalHandlers {
+			fn(r)
 		}
 	}
 }
